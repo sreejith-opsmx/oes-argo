@@ -25,6 +25,9 @@ spec:
                 fieldPath: status.hostIP
           - name: SERVICE_NAME
             value: argo-rollouts
+          - name: baseline-hash
+            valueFrom:
+              podTemplateHashValue: Latest
           ports:
             - containerPort: 8088
   strategy:
