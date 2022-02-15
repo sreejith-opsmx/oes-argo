@@ -33,9 +33,9 @@ spec:
               - name: canary
                 specRef: canary
             analyses:
-              - name : sleep-job
+              - name : oes-analysis-job
                 requiredForCompletion: true
-                templateName: sleep-job
+                templateName: oes-analysis-job
                 args:
                   - name: duration
                     value: 60s
