@@ -30,6 +30,10 @@ spec:
                         value: "{{args.canary-hash}}"
                       - name: LIFETIME_HOURS
                         value: "0.1"
+                      - name: APPLICATION
+                        value: "argoissuegen"
+                      - name: SERVICE_NAME
+                      - value: aggregateAnalysis
                       - name: LOG_ENABLED
                         value: "false"
                       - name: GATE_URL
