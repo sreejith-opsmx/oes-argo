@@ -23,11 +23,11 @@ spec:
                     imagePullPolicy: Always
                     env:
                       - name: EXPERIMENT_HASH
-                        value: "{{args.experiment-hash}}"
+                        value: "123"
                       - name: BASELINE_HASH
-                        value: "{{args.baseline-hash}}"
+                        value: "456"
                       - name: CANARY_HASH
-                        value: "{{args.canary-hash}}"
+                        value: "789"
                       - name: LIFETIME_HOURS
                         value: "0.1"
                       - name: APPLICATION
