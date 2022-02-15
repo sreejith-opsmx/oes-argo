@@ -22,6 +22,10 @@ spec:
   strategy:
     canary:
       steps:
+        - setWeight: 20
+        - pause: { duration: 10s }
+        - setWeight: 60
+        - pause: { duration: 1m }
         - experiment:
             templates:
               - name: baseline
@@ -29,14 +33,13 @@ spec:
               - name: canary
                 specRef: canary
             analyses:
-              - name : oes-analysis-job
+              - name : sleep-job
                 requiredForCompletion: true
-                templateName: oes-analysis-job
+                templateName: sleep-job
                 args:
-                  - name: experiment-hash
-                    valueFrom:
-                      podTemplateHashValue: Latest
-                  - name: baseline-hash
-                    value: "{{templates.baseline.podTemplateHash}}"
-                  - name: canary-hash
-                    value: "{{templates.canary.podTemplateHash}}"
+                  - name: duration
+                    value: 60s
+                  - name: exit-code
+                    value: "0"
+        - setWeight: 80
+        - pause: { duration: 1m }
