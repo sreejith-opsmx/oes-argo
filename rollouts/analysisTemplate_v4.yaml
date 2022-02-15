@@ -33,7 +33,7 @@ spec:
                       - name: APPLICATION
                         value: "argoissuegen"
                       - name: SERVICE_NAME
-                      - value: aggregateAnalysis
+                        value: aggregateAnalysis
                       - name: LOG_ENABLED
                         value: "false"
                       - name: GATE_URL
