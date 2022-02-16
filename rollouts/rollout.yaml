@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: oes-argo-rollout
 spec:
-  replicas: 1
+  replicas: 5
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -23,7 +23,25 @@ spec:
     canary:
       steps:
         - setWeight: 20
-        - pause: { duration: 10s }
+        - pause: { duration: 20s }
+        - experiment:
+            templates:
+              - name: baseline
+                specRef: stable
+              - name: canary
+                specRef: canary
+            analyses:
+              - name : oes-analysis-job
+                requiredForCompletion: true
+                templateName: oes-analysis-job
+                args:
+                  - name: experiment-hash
+                    valueFrom:
+                      podTemplateHashValue: Latest
+                  - name: baseline-hash
+                    value: "{{templates.baseline.podTemplateHash}}"
+                  - name: canary-hash
+                    value: "{{templates.canary.podTemplateHash}}"
         - setWeight: 60
         - pause: { duration: 1m }
         - experiment:
