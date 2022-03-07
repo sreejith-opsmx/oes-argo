@@ -91,4 +91,4 @@ spec:
                   - name: canary-hash
                     value: "{{templates.canary.podTemplateHash}}"
                   - name: lifetime-hours
-                    value: "0.05"                        
+                    value: "0.025"                        
