@@ -47,5 +47,5 @@ spec:
                       - name: GATE_URL
                         #value: "http://oes-gate.adobe311-1.opsmx.info/autopilot/api/v3/registerCanary"
                         #value: "https://observer-gate.aoa.oes.opsmx.org/autopilot/api/v3/registerCanary"
-                        #value: "https://oes-release-gate.dev.opsmx.org/autopilot/api/v3/registerCanary"
+                        value: "https://oes-performance.dev.opsmx.org/autopilot/api/v3/registerCanary"
                         
