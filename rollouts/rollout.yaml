@@ -22,23 +22,12 @@ spec:
   strategy:
     canary:
       steps:
-        - experiment:
-            templates:
-              - name: baseline
-                specRef: stable
-                replicas: 1
-              - name: canary
-                specRef: canary
-                replicas: 1
-            analyses:
-              - name : oes-analysis-job
-                requiredForCompletion: true
-                templateName: oes-analysis-job
-                args:
-                  - name: experiment-hash
-                    valueFrom:
-                      podTemplateHashValue: Latest
-                  - name: baseline-hash
-                    value: "{{templates.baseline.podTemplateHash}}"
-                  - name: canary-hash
-                    value: "{{templates.canary.podTemplateHash}}"
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause: {duration: 10}
+      - setWeight: 60
+      - pause: {duration: 10}
+      - setWeight: 80
+      - pause: {duration: 10}
+        
